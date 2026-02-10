@@ -1,6 +1,4 @@
 const content = document.getElementById('content');
-const openAllButton = document.getElementById('openAll');
-const closeAllButton = document.getElementById('closeAll');
 
 function parseCSV(text) {
   const rows = [];
@@ -162,19 +160,6 @@ function render(groups) {
   });
 }
 
-function bindButtons() {
-  openAllButton.addEventListener('click', () => {
-    document.querySelectorAll('details').forEach((details) => {
-      details.open = true;
-    });
-  });
-
-  closeAllButton.addEventListener('click', () => {
-    document.querySelectorAll('details').forEach((details) => {
-      details.open = false;
-    });
-  });
-}
 
 async function init() {
   try {
@@ -184,7 +169,6 @@ async function init() {
     const rows = parseCSV(text);
     const groups = groupHints(rows);
     render(groups);
-    bindButtons();
   } catch (error) {
     content.innerHTML = '<div class="loading">読み込みに失敗しました。</div>';
   }
