@@ -1,4 +1,5 @@
 const content = document.getElementById('content');
+const title = document.getElementById('title');
 
 function parseCSV(text) {
   const rows = [];
@@ -160,6 +161,21 @@ function render(groups) {
   });
 }
 
+function splitGroups(groups, hiddenTitle) {
+  const visible = [];
+  let hidden = null;
+
+  groups.forEach((group) => {
+    if (group.title === hiddenTitle) {
+      hidden = group;
+      return;
+    }
+    visible.push(group);
+  });
+
+  return { visible, hidden };
+}
+
 
 async function init() {
   try {
@@ -168,7 +184,23 @@ async function init() {
     const text = await response.text();
     const rows = parseCSV(text);
     const groups = groupHints(rows);
-    render(groups);
+    const hiddenTitle = 'お色直しが終わった後';
+    const { visible, hidden } = splitGroups(groups, hiddenTitle);
+    render(visible);
+
+    if (hidden && title) {
+      let clicks = 0;
+      let revealed = false;
+
+      title.addEventListener('click', () => {
+        if (revealed) return;
+        clicks += 1;
+        if (clicks < 5) return;
+        revealed = true;
+        content.appendChild(buildCard(hidden));
+        window.alert('追加ヒントが公開されました。');
+      });
+    }
   } catch (error) {
     content.innerHTML = '<div class="loading">読み込みに失敗しました。</div>';
   }
