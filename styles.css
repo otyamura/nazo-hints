@@ -1,0 +1,164 @@
+:root {
+  color-scheme: light;
+  --bg: #f7f2ea;
+  --card: #ffffff;
+  --ink: #1b1b1b;
+  --muted: #5c5c5c;
+  --accent: #0b5d4e;
+  --accent-soft: #e2f0ed;
+  --shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
+  --radius: 16px;
+  font-family: "Zen Maru Gothic", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #fff9f1 0%, #f7f2ea 55%, #efe6d8 100%);
+  color: var(--ink);
+}
+
+.page {
+  min-height: 100vh;
+  padding: 48px 20px 64px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.hero {
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+.lede {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 24px 0 32px;
+}
+
+.controls button {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.controls button:last-child {
+  background: #5c5c5c;
+}
+
+.content {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid #efe6d8;
+}
+
+.card summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card summary::-webkit-details-marker {
+  display: none;
+}
+
+.badge {
+  font-size: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.hints {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.hint {
+  background: #faf7f2;
+  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1px solid #e9e0d3;
+}
+
+.hint summary {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.hint p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  white-space: pre-wrap;
+}
+
+.answer {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #f2f7f4;
+  border: 1px solid #d6e6e1;
+}
+
+.answer strong {
+  color: var(--accent);
+}
+
+.loading {
+  text-align: center;
+  color: var(--muted);
+  padding: 24px;
+}
+
+.footer {
+  margin-top: 40px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (min-width: 700px) {
+  .controls {
+    justify-content: flex-start;
+  }
+}
